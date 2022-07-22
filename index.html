@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>SimpleClock</title>
+  </head>
+  <body>
+    <div id="time"></div>
+    <div id="date"></div>
+  </body>
+  <script>
+    function showTime() {
+      function getTime() {
+        let s = new Date().getSeconds();
+        let m = new Date().getMinutes();
+        let h = new Date().getHours();
+        function formatTime(raw) {
+          raw = String(raw);
+          l = raw.length;
+          if (l === 1) {
+            raw = 0 + raw;
+          } else {
+            raw = raw;
+          }
+          return raw;
+        }
+        s = formatTime(s);
+        m = formatTime(m);
+        h = formatTime(h);
+        return [s, m, h];
+      }
+      let time = getTime();
+      let s = time[0];
+      let m = time[1];
+      let h = time[2];
+      time = h + ":" + m + ":" + s;
+      console.log(time);
+      document.getElementById("time").innerHTML = time;
+    }
+    setInterval(showTime, 1000);
+  </script>
+</html>
