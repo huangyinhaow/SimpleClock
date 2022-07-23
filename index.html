@@ -6,7 +6,9 @@
       .center {
         word-spacing: -0.8em;
       }
-      #time {
+      .time {
+        filter: blur(1px);
+        display: flow-root;
         width: 100%;
         height: 40vh;
         position: absolute;
@@ -15,6 +17,7 @@
         transform: translate(-50%, -50%);
         font-family: "Courier New", Courier, monospace;
         font-size: 40vh;
+        font-weight: 400;
         word-spacing: -1em;
         color: #f1f1ed;
         text-shadow: 0 0 0.2em #f9630a;
@@ -26,7 +29,8 @@
     </style>
   </head>
   <body>
-    <div id="time"></div>
+    <div id="time1" class="time"></div>
+    <div id="time2" class="time"></div>
     <div id="date"></div>
   </body>
   <script>
@@ -35,6 +39,11 @@
         let s = new Date().getSeconds();
         let m = new Date().getMinutes();
         let h = new Date().getHours();
+        let ms = new Date().getMilliseconds();
+        if (ms > 499) {
+          s = s + 1;
+          console.log(s);
+        }
         function formatTime(raw) {
           raw = String(raw);
           l = raw.length;
@@ -68,8 +77,18 @@
         s +
         " " +
         "</a>";
-      document.getElementById("time").innerHTML = time;
+      return time;
     }
-    setInterval(showTime, 1000);
+    function showTime1() {
+      let t = showTime();
+      document.getElementById("time1").innerHTML = t;
+      return t;
+    }
+    function showTime2() {
+      let t = showTime();
+      document.getElementById("time2").innerHTML = t;
+    }
+    setInterval(showTime1, 1000);
+    setTimeout("setInterval(showTime2, 1000)", 900);
   </script>
 </html>
