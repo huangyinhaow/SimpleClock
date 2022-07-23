@@ -36,13 +36,13 @@
   <script>
     function showTime() {
       function getTime() {
-        let s = new Date().getSeconds();
-        let m = new Date().getMinutes();
-        let h = new Date().getHours();
-        let ms = new Date().getMilliseconds();
-        if (ms > 499) {
-          s = s + 1;
-        }
+        var s, m, h, ms;
+        do {
+          s = new Date().getSeconds();
+          m = new Date().getMinutes();
+          h = new Date().getHours();
+          ms = new Date().getMilliseconds();
+        } while (ms > 800);
         function formatTime(raw) {
           raw = String(raw);
           l = raw.length;
@@ -81,12 +81,14 @@
     function showTime1() {
       let t = showTime();
       document.getElementById("time1").innerHTML = t;
+      // console.log(t);
     }
     function showTime2() {
       let t = showTime();
       document.getElementById("time2").innerHTML = t;
+      // console.log(t);
     }
     setInterval(showTime1, 1000);
-    setTimeout("setInterval(showTime2, 1000)", 900);
+    setTimeout("setInterval(showTime2, 1000)", 100);
   </script>
 </html>
