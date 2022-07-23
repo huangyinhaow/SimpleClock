@@ -42,7 +42,6 @@
         let ms = new Date().getMilliseconds();
         if (ms > 499) {
           s = s + 1;
-          console.log(s);
         }
         function formatTime(raw) {
           raw = String(raw);
@@ -82,7 +81,6 @@
     function showTime1() {
       let t = showTime();
       document.getElementById("time1").innerHTML = t;
-      return t;
     }
     function showTime2() {
       let t = showTime();
