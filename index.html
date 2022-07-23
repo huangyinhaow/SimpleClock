@@ -3,22 +3,22 @@
   <head>
     <title>SimpleClock</title>
     <style>
+      .center {
+        word-spacing: -0.8em;
+      }
       #time {
-        height: 50%;
+        width: 100%;
+        height: 40vh;
         position: absolute;
-        margin: auto;
-        top: 0;
-        bottom: 0;
-        right: 0;
-        left: 0;
-        text-align: center;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
         font-family: "Courier New", Courier, monospace;
-        font-weight: 400;
         font-size: 40vh;
+        word-spacing: -1em;
         color: #f1f1ed;
-        letter-spacing: -0.1em;
-        text-shadow: 0 0 0.1em #f9630a;
-        transition: all 3s;
+        text-shadow: 0 0 0.2em #f9630a;
+        text-align: center;
       }
       body {
         background-color: #3b2122;
@@ -54,8 +54,20 @@
       let s = time[0];
       let m = time[1];
       let h = time[2];
-      time = h + ":" + m + ":" + s;
-      console.log(time);
+      time =
+        '<a class="center">' +
+        " " +
+        h +
+        " " +
+        ":" +
+        " " +
+        m +
+        " " +
+        ":" +
+        " " +
+        s +
+        " " +
+        "</a>";
       document.getElementById("time").innerHTML = time;
     }
     setInterval(showTime, 1000);
