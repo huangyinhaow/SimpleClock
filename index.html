@@ -24,7 +24,7 @@
         text-align: center;
       }
       body {
-        background-color: #3b2122;
+        background-color: #241213;
       }
     </style>
   </head>
@@ -37,12 +37,9 @@
     function showTime() {
       function getTime() {
         var s, m, h, ms;
-        do {
-          s = new Date().getSeconds();
-          m = new Date().getMinutes();
-          h = new Date().getHours();
-          ms = new Date().getMilliseconds();
-        } while (ms > 800);
+        s = new Date().getSeconds();
+        m = new Date().getMinutes();
+        h = new Date().getHours();
         function formatTime(raw) {
           raw = String(raw);
           l = raw.length;
@@ -88,6 +85,9 @@
       document.getElementById("time2").innerHTML = t;
       // console.log(t);
     }
+    do {
+      ms = new Date().getMilliseconds();
+    } while (ms > 900);
     setInterval(showTime1, 1000);
     setTimeout("setInterval(showTime2, 1000)", 100);
   </script>
